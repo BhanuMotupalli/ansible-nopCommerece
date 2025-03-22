@@ -12,7 +12,7 @@
     - name: add nop user
       ansible.builtin.user:
         name: "{{ username }}"
-        create_home: "{{ home_dir }}"
+        home: "{{ home_dir }}"
     - name: download nopCommerce
       ansible.builtin.unarchive:
         src: "{{ nop_url }}"
