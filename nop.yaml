@@ -1,0 +1,20 @@
+---
+- name: dotnet application deployment
+  hosts: app
+  become: yes
+  tasks:
+    - name: install dotnet sdk
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        update_cache: yes
+        state: present
+    - name: add nop user
+      ansible.builtin.user:
+        name: "{{ username }}"
+        create_home: "{{ home_dir }}"
+    - name: download nopCommerce
+      ansible.builtin.unarchive:
+        src: "{{ nop_url }}"
+        dest: "{{ home_dir }}"
+        remote_src: yes
+        owner: "{{ username }}"
