@@ -19,3 +19,9 @@
         dest: "{{ home_dir }}"
         remote_src: yes
         owner: "{{ username }}"
+    - name: create bin and logs
+      ansible.builtin.file:
+        owner: "{{ username }}"
+        path: "{{ home_dir }}/{{ item }}"
+        state: directory
+      loop: "{{ folders }}"
