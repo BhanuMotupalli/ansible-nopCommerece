@@ -1,6 +1,5 @@
 ---
 # vars file for template
----
 packages:
   - dotnet-sdk-8.0
   - unzip
